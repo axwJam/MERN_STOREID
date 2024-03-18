@@ -28,7 +28,7 @@ app.use(
 app.use("/", [authModel, userModel, storeModel, productModel, cartModel, ordersModel, boxModel, paymentModel]);
 
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to StoreId" });
+  res.send("Welcome to MERN Project");
 });
 
 mongoose
