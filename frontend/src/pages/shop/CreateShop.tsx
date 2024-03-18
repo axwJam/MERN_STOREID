@@ -85,7 +85,7 @@ const MyProfile: React.FC = () => {
     const authToken = Cookies.get("authToken");
     try {
       const response = await axios.post(
-        "http://localhost:5555/store",
+        "https://mern-storeidku.vercel.app/store",
         { name: formData.nama_toko, address: formData.alamat_toko },
         {
           headers: {

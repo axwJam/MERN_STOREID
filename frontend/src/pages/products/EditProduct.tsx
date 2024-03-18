@@ -151,7 +151,7 @@ function myProfile(): JSX.Element {
         formData.append("stock", stock);
       }
 
-      const response = await axios.put(`http://localhost:5555/product/${id}`, formData, {
+      const response = await axios.put(`https://mern-storeidku.vercel.app/product/${id}`, formData, {
         headers: {
           Authorization: `Bearer ${authToken}`,
           "Content-Type": "multipart/form-data",
@@ -187,7 +187,7 @@ function myProfile(): JSX.Element {
 
   const getProfile = async () => {
     try {
-      const response = await axios.get(`http://localhost:5555/product/${id}`, {
+      const response = await axios.get(`https://mern-storeidku.vercel.app/product/${id}`, {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },

@@ -8,7 +8,6 @@ import Header from "../../components/Product/Header";
 import Footer from "../../components/Footer";
 import { infoAlertFC } from "../../utils/functions";
 
-
 const ListUsers = () => {
   const username = Cookies.get("username");
   const navigate = useNavigate();
@@ -22,7 +21,7 @@ const ListUsers = () => {
     } else {
       const cekData = async () => {
         try {
-          const response = await axios.get("https://altalaptop.shop/alluser");
+          const response = await axios.get("https://mern-storeidku.vercel.app/alluser");
           setDataUser(response.data);
         } catch (error) {
           infoAlertFC("Warning", "Belum ada User", "warning");
