@@ -34,7 +34,7 @@ const ListProduct = () => {
     }).then((res) => {
       if (res.isConfirmed) {
         axios
-          .delete(`http://localhost:5555/product/${id}`, {
+          .delete(`https://mern-storeidku.vercel.app/product/${id}`, {
             headers: {
               Authorization: `Bearer ${authToken}`,
             },
@@ -55,7 +55,7 @@ const ListProduct = () => {
 
   const cekData = async () => {
     try {
-      const response = await axios.get("http://localhost:5555/product", {
+      const response = await axios.get("https://mern-storeidku.vercel.app/product", {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },

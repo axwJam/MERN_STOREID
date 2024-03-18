@@ -135,7 +135,7 @@ function myProfile(): JSX.Element {
         formData.append("stock", stock);
       }
 
-      const response = await axios.post("http://localhost:5555/product", formData, {
+      const response = await axios.post("https://mern-storeidku.vercel.app/product", formData, {
         headers: {
           Authorization: `Bearer ${authToken}`,
           "Content-Type": "multipart/form-data",

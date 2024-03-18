@@ -22,7 +22,7 @@ const HistoryOrderProducts = () => {
 
   const cekData = async () => {
     try {
-      const response = await axios.get("http://localhost:5555/payment", {
+      const response = await axios.get("https://mern-storeidku.vercel.app/payment", {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },

@@ -43,7 +43,7 @@ const Payment: FC = () => {
     }).then((res: any) => {
       if (res.isConfirmed) {
         axios
-          .post("http://localhost:5555/payment", pembayaran, {
+          .post("https://mern-storeidku.vercel.app/payment", pembayaran, {
             headers: {
               Authorization: `Bearer ${authToken}`,
             },

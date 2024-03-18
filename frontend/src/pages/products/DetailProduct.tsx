@@ -21,7 +21,7 @@ const DetailProduct: FC = () => {
 
   const showDetail = async () => {
     try {
-      const response = await axios.get(`http://localhost:5555/product/${id}`, {
+      const response = await axios.get(`https://mern-storeidku.vercel.app/product/${id}`, {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
@@ -47,7 +47,7 @@ const DetailProduct: FC = () => {
 
       if (username) {
         try {
-          await axios.post(`http://localhost:5555/cart?productId=${id}`, updateData, {
+          await axios.post(`https://mern-storeidku.vercel.app/cart?productId=${id}`, updateData, {
             headers: {
               Authorization: `Bearer ${authToken}`,
               "Content-Type": "application/json",

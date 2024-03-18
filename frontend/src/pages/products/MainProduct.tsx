@@ -52,7 +52,7 @@ const MainProduct = () => {
 
   const getProduct = async () => {
     try {
-      const response = await axios.get("http://localhost:5555/product-all", {
+      const response = await axios.get("https://mern-storeidku.vercel.app/product-all", {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
@@ -78,7 +78,7 @@ const MainProduct = () => {
         const product = async () => {
           const authToken = Cookies.get("authToken");
           try {
-            const response = await axios.get("http://localhost:5555/product", {
+            const response = await axios.get("https://mern-storeidku.vercel.app/product", {
               headers: {
                 Authorization: `Bearer ${authToken}`,
               },
@@ -120,7 +120,7 @@ const MainProduct = () => {
   const call = async () => {
     if (username) {
       try {
-        const userIdToko = await axios.get(`http://localhost:5555/store`, {
+        const userIdToko = await axios.get(`https://mern-storeidku.vercel.app/store`, {
           headers: {
             Authorization: `Bearer ${authToken}`,
           },

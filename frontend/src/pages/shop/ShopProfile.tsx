@@ -155,7 +155,7 @@ const MyProfile: React.FC = () => {
   const getToko = async () => {
     const authToken = Cookies.get("authToken");
     try {
-      const response = await axios.get("http://localhost:5555/store", {
+      const response = await axios.get("https://mern-storeidku.vercel.app/store", {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
@@ -184,7 +184,7 @@ const MyProfile: React.FC = () => {
       formData.append("name", name);
       formData.append("address", address);
 
-      const response = await axios.put("http://localhost:5555/store", formData, {
+      const response = await axios.put("https://mern-storeidku.vercel.app/store", formData, {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
@@ -207,23 +207,23 @@ const MyProfile: React.FC = () => {
   const handleHapus = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     const authToken = Cookies.get("authToken");
-    console.log(authToken);
     try {
-      const response = await axios.delete("http://localhost:5555/store", {
+      const response = await axios.delete("https://mern-storeidku.vercel.app/store", {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
       });
-      Swal.fire({
-        title: "Confirmation",
-        text: `Hapus Toko Berhasil`,
-        icon: "success",
-        confirmButtonText: "OK",
-        confirmButtonColor: "rgb(3 150 199)",
-      });
-      Cookies.remove("nama_toko");
-      console.log(response);
-      navigate("/");
+      if (response) {
+        Swal.fire({
+          title: "Confirmation",
+          text: `Hapus Toko Berhasil`,
+          icon: "success",
+          confirmButtonText: "OK",
+          confirmButtonColor: "rgb(3 150 199)",
+        });
+        Cookies.remove("nama_toko");
+        navigate("/");
+      }
     } catch (error) {
       console.error("Error:", error);
     }

@@ -113,7 +113,7 @@ function myProfile(): JSX.Element {
   const getProfile = async () => {
     const authToken = Cookies.get("authToken");
     try {
-      const response = await axios.get("http://localhost:5555/user", {
+      const response = await axios.get("https://mern-storeidku.vercel.app/user", {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
@@ -163,7 +163,7 @@ function myProfile(): JSX.Element {
         formData.append("password", password);
       }
 
-      const response = await axios.put("http://localhost:5555/user", formData, {
+      const response = await axios.put("https://mern-storeidku.vercel.app/user", formData, {
         headers: {
           Authorization: `Bearer ${authToken}`,
           "Content-Type": "multipart/form-data",
@@ -181,7 +181,6 @@ function myProfile(): JSX.Element {
         }).then((res) => {
           const update = response.data.username;
           const image = response.data.image;
-          console.log(image);
           if (res.isConfirmed) {
             Cookies.remove("username");
             Cookies.remove("gambar");
@@ -211,7 +210,7 @@ function myProfile(): JSX.Element {
       if (res.isConfirmed) {
         try {
           await axios
-            .delete("http://localhost:5555/user", {
+            .delete("https://mern-storeidku.vercel.app/user", {
               headers: {
                 Authorization: `Bearer ${authToken}`,
               },
