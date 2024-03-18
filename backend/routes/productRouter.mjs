@@ -1,7 +1,7 @@
 import express from "express";
 import { productModel } from "../model/productModel.mjs";
 import { verifyToken } from "../middleware/middleware.mjs";
-import cloudinary from "../cloudinary.mjs";
+import cloudinary from "../cloudinaryConfig.mjs";
 import upload from "../multer.config.mjs";
 
 const router = express.Router();
