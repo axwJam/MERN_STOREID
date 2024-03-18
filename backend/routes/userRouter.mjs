@@ -2,7 +2,7 @@ import express from "express";
 import { authModel } from "../model/authModel.mjs";
 import { verifyToken } from "../middleware/middleware.mjs";
 import upload from "../multer.config.mjs";
-import cloudinary from "../cloudinaryConfig.mjs";
+import cloudinary from "../cloudinary.mjs";
 import bcrypt from "bcrypt";
 
 const router = express.Router();
