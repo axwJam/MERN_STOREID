@@ -43,7 +43,7 @@ const Payment: FC = () => {
     }).then((res: any) => {
       if (res.isConfirmed) {
         axios
-          .post("https://mern-storeidku.vercel.app/payment", pembayaran, {
+          .post("http://localhost:5555/payment", pembayaran, {
             headers: {
               Authorization: `Bearer ${authToken}`,
             },
@@ -111,7 +111,7 @@ const Payment: FC = () => {
 
       <form onSubmit={handlePayment}>
         <div className="flex justify-center items-center gap-3 h-auto my-20 font-Poppins w-full">
-          <div className="flex flex-col justify-center gap-3 md:w-[50%] w-[80%]">
+          <div className="flex flex-col justify-center gap-3 w-[50%]">
             <span className="font-semibold md:text-base text-sm">Pengguna</span>
             <input
               required

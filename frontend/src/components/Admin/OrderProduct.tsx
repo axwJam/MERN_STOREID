@@ -5,18 +5,14 @@ import NumberFormatter from "../NumberFormatter";
 const OrderProduct: FC<typeHistoryOrder> = (props: typeHistoryOrder) => {
   const { price, nama_lengkap, description, stock, brand, type, image, hapus, status, check } = props;
   return (
-    <div id="profileInfo" className="flex md:flex-row flex-col gap-5 bg-[#E5F3FF] md:p-8 p-2 rounded-md">
-      <div className="h-52">
-        <img id="profileImage" src={image} alt="person" className="rounded-md md:h-28 h-full w-full  md:w-32" />
-      </div>
+    <div id="profileInfo" className="flex gap-5 bg-[#E5F3FF] md:p-8 p-2 rounded-md">
+      <img id="profileImage" src={image} alt="person" className="rounded-md  h-1/2 w-1/4" />
       <div className="flex flex-col w-full gap-3">
-        <div className="div md:flex-row flex-col  justify-between">
-          <p id="profileName" className="font-semibold md:text-xl text-sm place-self-end mb-3">
+        <div className="div flex justify-between">
+          <span id="profileName" className="font-semibold md:text-xl text-base place-self-end">
             Nama Pelanggan : {nama_lengkap}
-          </p>
-          <div className=" w-24 rounded-md py-2 px-4 md:text-base text-sm text-black border-2 border-blue-400 border-opacity-60 ">
-            <p>{status}</p>
-          </div>
+          </span>
+          <span className="ml-5 rounded-md py-2 px-4 text-black border-2 border-blue-400 border-opacity-60">{status}</span>
         </div>
         <span id="profileUsername" className="text-[#999999] text-xs md:text-base">
           Nama Produk : {brand} {type}

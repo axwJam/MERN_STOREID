@@ -19,7 +19,7 @@ const Card: FC<productDataType> = (props: productDataType) => {
     if (username) {
       try {
         axios
-          .post(`https://mern-storeidku.vercel.app/cart?productId=${id}`, updateData, {
+          .post(`http://localhost:5555/cart?productId=${id}`, updateData, {
             headers: {
               Authorization: `Bearer ${authToken}`,
               "Content-Type": "application/json",

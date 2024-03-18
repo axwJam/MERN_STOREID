@@ -13,7 +13,7 @@ const HistoryOrderUser = () => {
 
   const cekData = async () => {
     try {
-      const response = await axios.get("https://mern-storeidku.vercel.app/my-payment", {
+      const response = await axios.get("http://localhost:5555/my-payment", {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
@@ -41,7 +41,7 @@ const HistoryOrderUser = () => {
       if (res.isConfirmed) {
         axios
           .put(
-            `https://mern-storeidku.vercel.app/payment/${id}`,
+            `http://localhost:5555/payment/${id}`,
             { status: "Selesai" },
             {
               headers: {

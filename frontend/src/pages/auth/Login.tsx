@@ -29,7 +29,7 @@ const Login: FC = () => {
       Cookies.set("username", "admin");
     } else {
       try {
-        const response = await axios.post("https://mern-storeidku.vercel.app/login", {
+        const response = await axios.post("http://localhost:5555/login", {
           email: loginState.email,
           password: loginState.password,
         });
@@ -46,7 +46,7 @@ const Login: FC = () => {
             if (res.isConfirmed) {
               const cekData = async () => {
                 try {
-                  const response = await axios.get("https://mern-storeidku.vercel.app/alluser");
+                  const response = await axios.get("http://localhost:5555/alluser");
                   const userData = response.data;
                   const findOut = userData.find((user: { [key: string]: string }) => user.email === loginState.email);
                   if (findOut) {

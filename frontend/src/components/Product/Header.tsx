@@ -35,12 +35,12 @@ const Navbar: FC = () => {
   const call = async () => {
     if (username) {
       try {
-        const userIdToko = await axios.get(`https://mern-storeidku.vercel.app/store`, {
+        const userIdToko = await axios.get(`http://localhost:5555/store`, {
           headers: {
             Authorization: `Bearer ${authToken}`,
           },
         });
-        if (userIdToko.data.message !== "There is no store") {
+        if (userIdToko) {
           setHidden(true);
         }
       } catch (error: any) {

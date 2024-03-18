@@ -20,7 +20,7 @@ function Cart() {
   const clickProduct = async () => {
     try {
       const response = await axios.post(
-        "https://mern-storeidku.vercel.app/orders",
+        "http://localhost:5555/orders",
         { id: 1 },
         {
           headers: {
@@ -48,7 +48,7 @@ function Cart() {
   const editCartItem = async (productId: string, jumlah: number) => {
     try {
       await axios.put(
-        `https://mern-storeidku.vercel.app/cart/${productId}`,
+        `http://localhost:5555/cart/${productId}`,
         {
           quantity: jumlah,
         },
@@ -136,7 +136,7 @@ function Cart() {
   const deleteCartItem = (productId: string) => {
     try {
       axios
-        .delete(`https://mern-storeidku.vercel.app/cart/${productId}`, {
+        .delete(`http://localhost:5555/cart/${productId}`, {
           headers: {
             Authorization: `Bearer ${authToken}`,
           },
@@ -193,7 +193,7 @@ function Cart() {
   const getCartItem = () => {
     try {
       axios
-        .get("https://mern-storeidku.vercel.app/cart", {
+        .get("http://localhost:5555/cart", {
           headers: {
             Authorization: `Bearer ${authToken}`,
           },

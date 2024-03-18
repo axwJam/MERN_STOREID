@@ -32,7 +32,7 @@ const Register: FC = () => {
       return;
     }
     try {
-      const response = await axios.post("https://mern-storeidku.vercel.app/register", {
+      const response = await axios.post("http://localhost:5555/register", {
         full_name: registerState.full_name,
         username: registerState.username,
         password: registerState.password,

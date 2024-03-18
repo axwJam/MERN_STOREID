@@ -155,7 +155,7 @@ const MyProfile: React.FC = () => {
   const getToko = async () => {
     const authToken = Cookies.get("authToken");
     try {
-      const response = await axios.get("https://mern-storeidku.vercel.app/store", {
+      const response = await axios.get("http://localhost:5555/store", {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
@@ -184,7 +184,7 @@ const MyProfile: React.FC = () => {
       formData.append("name", name);
       formData.append("address", address);
 
-      const response = await axios.put("https://mern-storeidku.vercel.app/store", formData, {
+      const response = await axios.put("http://localhost:5555/store", formData, {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
@@ -209,7 +209,7 @@ const MyProfile: React.FC = () => {
     const authToken = Cookies.get("authToken");
     console.log(authToken);
     try {
-      const response = await axios.delete("https://mern-storeidku.vercel.app/store", {
+      const response = await axios.delete("http://localhost:5555/store", {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
