@@ -17,18 +17,18 @@
 
 ## Description
 
-This is a web-based book store project, built with MERN stack (MongoDB, Express.js, React.js, and Node.js) technologies. The project allows users to perform CRUD (Create, Read, Update, Delete) operations on a list of books.
+This is a web-based  store project, built with MERN stack (MongoDB, Express.js, React.js, and Node.js) technologies. The project allows users to perform CRUD (Create, Read, Update, Delete) operations on a list of products.
 
 ## Features
 
-- **CRUD Operations**: Users can add, view, update, and delete books from the store.
-- **Search**: Users can search for books based on title, author, or category.
+- **CRUD Operations**: Users can add, view, update, and delete product from the store.
+- **Search**: Users can search for product based on title, author, or category.
 - **Responsive**: Responsive user interface to support usage on both mobile and desktop devices.
 - **Clean Design**: Clean and user-friendly interface design using TailwindCSS.
 
 ## Technologies Used
 
-- **MongoDB**: NoSQL database used to store book data.
+- **MongoDB**: NoSQL database used to store data.
 - **Express.js**: Backend web framework to handle HTTP requests and business logic.
 - **React.js**: JavaScript library for building interactive user interfaces.
 - **Node.js**: JavaScript runtime environment to run the backend server.
