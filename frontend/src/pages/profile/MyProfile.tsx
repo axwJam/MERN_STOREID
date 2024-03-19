@@ -163,7 +163,7 @@ function myProfile(): JSX.Element {
         formData.append("image", selectedImage);
       }
 
-      const response = await axios.put("https://mern-storeidku.vercel.app", formData, {
+      const response = await axios.put("https://mern-storeidku.vercel.app/user", formData, {
         headers: {
           Authorization: `Bearer ${authToken}`,
           "Content-Type": "multipart/form-data",
