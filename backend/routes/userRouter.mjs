@@ -86,7 +86,6 @@ router.put("/user", verifyToken, upload.single("image"), async (req, res) => {
       return res.status(200).json(updatedProduct);
     }
   } catch (error) {
-    console.log(error)
     res.status(500).send({ message: error.message });
   }
 });
