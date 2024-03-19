@@ -5,5 +5,3 @@ export const cloudName = process.env.CLOUD_NAME;
 export const cloudApiKey = process.env.CLOUD_API_KEY;
 export const cloudApiSecret = process.env.CLOUD_API_SECRET;
 
-console.log(jwtSecret, cloudName, cloudApiKey, cloudApiSecret);
-
