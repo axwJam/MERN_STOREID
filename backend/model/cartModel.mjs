@@ -15,6 +15,7 @@ const cartSchema = new mongoose.Schema({
   quantity: { type: Number },
   cartId: { type: String },
   storeId: { type: String },
+  productId: { type: String },
 });
 
 export const cartModel = mongoose.model("cart", cartSchema);

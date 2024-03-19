@@ -138,17 +138,17 @@ function myProfile(): JSX.Element {
     e.preventDefault();
     try {
       const formData = new FormData();
+      formData.append("brand", brand);
+      formData.append("type", type);
+      formData.append("categories", categories);
+      formData.append("price", price);
+      formData.append("description", description);
+      formData.append("storage", storage);
+      formData.append("ram", ram);
+      formData.append("processor", processor);
+      formData.append("stock", stock);
       if (selectedImage) {
         formData.append("image", selectedImage);
-        formData.append("brand", brand);
-        formData.append("type", type);
-        formData.append("categories", categories);
-        formData.append("price", price);
-        formData.append("description", description);
-        formData.append("storage", storage);
-        formData.append("ram", ram);
-        formData.append("processor", processor);
-        formData.append("stock", stock);
       }
 
       const response = await axios.put(`https://mern-storeidku.vercel.app/product/${id}`, formData, {
@@ -181,7 +181,7 @@ function myProfile(): JSX.Element {
         });
       }
     } catch (error) {
-      infoAlertFC("Error", "Anda Harus Mengupload gambar dulu", "error");
+      infoAlertFC("Error", "Terjadi kesalahan saat mengupdate data", "error");
     }
   };
 

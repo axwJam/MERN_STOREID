@@ -14,23 +14,31 @@ router.post("/cart", verifyToken, async (req, res) => {
     if (!product) {
       return res.status(404).json({ message: "Product not found" });
     }
-    const result = await cartModel.create({
-      storage: product.storage,
-      ram: product.ram,
-      price: req.body.price,
-      description: product.description,
-      type: product.type,
-      image: product.image,
-      brand: product.brand,
-      processor: product.processor,
-      categories: product.categories,
-      stock: product.stock,
-      storeId: product.storeId,
-      cartId: userId,
-      quantity: req.body.quantity,
-      totalPrice: req.body.quantity * product.price,
-    });
-    return res.status(200).json(result);
+    let cartItem = await cartModel.findOne({ productId: productId });
+    if (cartItem) {
+      cartItem.quantity += req.body.quantity;
+      cartItem.totalPrice = cartItem.quantity * product.price;
+      await cartItem.save();
+    } else {
+      cartItem = await cartModel.create({
+        storage: product.storage,
+        ram: product.ram,
+        price: req.body.price,
+        description: product.description,
+        type: product.type,
+        image: product.image,
+        brand: product.brand,
+        processor: product.processor,
+        categories: product.categories,
+        stock: product.stock,
+        storeId: product.storeId,
+        cartId: userId,
+        quantity: req.body.quantity,
+        totalPrice: req.body.quantity * product.price,
+        productId: productId,
+      });
+    }
+    return res.status(200).json(cartItem);
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }

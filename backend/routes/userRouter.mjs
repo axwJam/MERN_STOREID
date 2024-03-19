@@ -2,7 +2,7 @@ import express from "express";
 import { authModel } from "../model/authModel.mjs";
 import { verifyToken } from "../middleware/middleware.mjs";
 import upload from "../multer.config.mjs";
-import cloudinary from "../cloudinary.mjs";
+import cloudinary from "../cloudinaryConfig.mjs";
 import bcrypt from "bcrypt";
 
 const router = express.Router();
@@ -71,14 +71,17 @@ router.delete("/user/:id", verifyToken, async (req, res) => {
 router.put("/user", verifyToken, upload.single("image"), async (req, res) => {
   const userId = req.user.id;
   try {
-    const result = await cloudinary.uploader.upload(req.file.path, { folder: "product" });
-    const imageUrl = result.secure_url;
+    let imageUrl;
+    if (req.file) {
+      const result = await cloudinary.uploader.upload(req.file.path, { folder: "product" });
+      imageUrl = result.secure_url;
+    }
     if (req.body.password) {
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
-      const updatedProduct = await authModel.findByIdAndUpdate(userId, { ...req.body, password: hashedPassword, image: imageUrl });
+      const updatedProduct = await authModel.findByIdAndUpdate(userId, { ...req.body, password: hashedPassword, image: imageUrl }, { new: true });
       return res.status(200).json(updatedProduct);
     } else {
-      const updatedProduct = await authModel.findByIdAndUpdate(userId, { ...req.body, image: imageUrl });
+      const updatedProduct = await authModel.findByIdAndUpdate(userId, { ...req.body, image: imageUrl }, { new: true });
       return res.status(200).json(updatedProduct);
     }
   } catch (error) {

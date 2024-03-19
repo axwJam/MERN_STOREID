@@ -1,7 +1,7 @@
 import express from "express";
 import { productModel } from "../model/productModel.mjs";
 import { verifyToken } from "../middleware/middleware.mjs";
-import cloudinary from "../cloudinary.mjs";
+import cloudinary from "../cloudinaryConfig.mjs";
 import upload from "../multer.config.mjs";
 
 const router = express.Router();
@@ -38,9 +38,12 @@ router.post("/product", verifyToken, upload.single("image"), async (req, res) =>
 router.put("/product/:id", verifyToken, upload.single("image"), async (req, res) => {
   const { id } = req.params;
   try {
-    const result = await cloudinary.uploader.upload(req.file.path, { folder: "product" });
-    const imageUrl = result.secure_url;
-    const updatedProduct = await productModel.findByIdAndUpdate(id, { ...req.body, image: imageUrl });
+    let updateObject = { ...req.body };
+    if (req.file) {
+      const result = await cloudinary.uploader.upload(req.file.path, { folder: "product" });
+      updateObject.image = result.secure_url;
+    }
+    const updatedProduct = await productModel.findByIdAndUpdate(id, updateObject, { new: true });
     return res.status(200).json(updatedProduct);
   } catch (error) {
     res.status(500).send({ message: error.message });

@@ -220,7 +220,7 @@ function Cart() {
       items: [...cartItems],
       total: cartItems.reduce((acc, item) => acc + item.totalPrice, 0),
     });
-  }, [cartItems]);
+  }, [cartItems, incrementQuantity, decrementQuantity]);
 
   useEffect(() => {
     getCartItem();

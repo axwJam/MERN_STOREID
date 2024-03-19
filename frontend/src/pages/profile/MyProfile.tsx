@@ -153,17 +153,17 @@ function myProfile(): JSX.Element {
     !uploadedImageUrl && "";
     try {
       const formData = new FormData();
+      formData.append("full_name", full_name);
+      formData.append("username", username);
+      formData.append("gender", gender);
+      formData.append("email", email);
+      formData.append("no_handphone", no_handphone);
+      formData.append("password", password);
       if (selectedImage) {
         formData.append("image", selectedImage);
-        formData.append("full_name", full_name);
-        formData.append("username", username);
-        formData.append("gender", gender);
-        formData.append("email", email);
-        formData.append("no_handphone", no_handphone);
-        formData.append("password", password);
       }
 
-      const response = await axios.put("https://mern-storeidku.vercel.app/user", formData, {
+      const response = await axios.put("https://mern-storeidku.vercel.app", formData, {
         headers: {
           Authorization: `Bearer ${authToken}`,
           "Content-Type": "multipart/form-data",
@@ -181,6 +181,7 @@ function myProfile(): JSX.Element {
         }).then((res) => {
           const update = response.data.username;
           const image = response.data.image;
+          console.log(image);
           if (res.isConfirmed) {
             Cookies.remove("username");
             Cookies.remove("gambar");
@@ -191,7 +192,7 @@ function myProfile(): JSX.Element {
         });
       }
     } catch (error) {
-      infoAlertFC("warning", "Error Anda Harus Masukan image dulu", "error");
+      infoAlertFC("warning", "Terjadi kesalahan saat mengupdate data", "error");
     }
   };
 
