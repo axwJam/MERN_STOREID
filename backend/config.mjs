@@ -1,3 +1,7 @@
+import dotenv from "dotenv";
+
+dotenv.config();
+
 export const urlPort = 5555;
 export const mongoDBURL = `mongodb://127.0.0.1:27017/store_id`;
 export const jwtSecret = process.env.JWT_SECRET;
