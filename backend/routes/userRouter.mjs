@@ -71,8 +71,6 @@ router.delete("/user/:id", verifyToken, async (req, res) => {
 router.put("/user", verifyToken, upload.single("image"), async (req, res) => {
   const userId = req.user.id;
   try {
-    let imageUrl;
-    }
     if (req.file) {
       const result = await cloudinary.uploader.upload(req.file.path, { folder: "product" });
       imageUrl = result.secure_url;
@@ -86,6 +84,7 @@ router.put("/user", verifyToken, upload.single("image"), async (req, res) => {
       return res.status(200).json(updatedProduct);
     }
   } catch (error) {
+    console.log(error)
     res.status(500).send({ message: error.message });
   }
 });
